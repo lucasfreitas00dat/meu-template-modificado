@@ -1,38 +1,139 @@
+/* Estilo base para o aplicativo */
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column; /* Organiza os elementos na vertical */
+  justify-content: flex-start; /* Alinha no topo */
+  align-items: stretch; /* Garante que o conteúdo ocupe toda a largura */
+  height: 100%; /* Garante que o conteúdo ocupe 100% da altura disponível */
+  margin: 0; /* Remove qualquer margem extra */
+  background-color: #f0f0f0; /* Cor de fundo clara */
+  font-family: 'Arial', sans-serif;
+  padding: 0; /* Remove o padding externo, será controlado por outros elementos */
 }
 
+/* Estilo do logo */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  transition: transform 0.3s ease; /* Suaviza o aumento de tamanho no hover */
 }
 
+.App-logo:hover {
+  transform: scale(1.1); /* Aumenta a logo quando o mouse passa por cima */
+}
+
+/* Animação da logo */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* Estilo do cabeçalho */
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  color: white;
+  width: 100%;
+  padding: 16px 20px; /* Reduzindo o padding para melhorar o espaço */
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efeito de sombra */
+  margin-bottom: 16px; /* Espaço abaixo do cabeçalho */
 }
 
+.App-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0; /* Remove margem superior */
+}
+
+/* Links */
 .App-link {
   color: #61dafb;
+  text-decoration: none; /* Remove o sublinhado */
+  font-weight: bold;
 }
 
+.App-link:hover {
+  color: #21a1f1; /* Cor de hover mais intensa */
+  text-decoration: underline; /* Adiciona sublinhado no hover */
+}
+
+/* Animação de rotação para o logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Layout em grid para conteúdos principais */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Layout responsivo com múltiplas colunas */
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Limita a largura do container */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* Estilo de botões */
+.button {
+  background-color: #61dafb;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #21a1f1; /* Mudança de cor no hover */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1200px) {
+  .App-header h1 {
+    font-size: calc(16px + 1vw); /* Ajusta o tamanho da fonte com base na tela */
+  }
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adapta as colunas para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px; /* Reduz o padding para telas menores */
+  }
+
+  .App-header {
+    font-size: calc(10px + 2vmin); /* Ajuste de tamanho de fonte */
+    padding: 12px 16px; /* Menos padding */
+  }
+
+  .container {
+    grid-template-columns: 1fr; /* Apenas uma coluna em telas pequenas */
+  }
+
+  .button {
+    width: 100%; /* Botões ocupam toda a largura em dispositivos móveis */
+  }
+}
+
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.5rem; /* Ajuste ainda mais fino para telas muito pequenas */
+  }
+
+  .button {
+    padding: 10px 20px; /* Ajusta o tamanho do botão para telas menores */
   }
 }
